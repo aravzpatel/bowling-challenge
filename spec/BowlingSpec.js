@@ -8,16 +8,19 @@ describe('Bowling', function() {
 
   it("should return 2 when it is passed 1,1", function(){
     bowling.frameOneInput(1,1)
-    // console.log("in the spec file")
-    var result = bowling.calculateScore(bowling.returnScore);
-    console.log(bowling.calculateScore(bowling.returnScore))
-    console.log(bowling.returnScore(bowling.calculateScore))
-    expect(bowling.calculateScore(bowling.returnScore)).toEqual(2);
+    expect(bowling.calculateScore()).toEqual(2);
   })
 
-  xit("should return 10 when it is passed 1,9", function(){
+  it("should return 10 when it is passed 1,9", function(){
     bowling.frameOneInput(1,9)
-    expect(bowling.score()).toEqual(10)
+    expect(bowling.calculateScore()).toEqual(10)
   })
 
+  describe("entering a false input", function(){
+    it("should throw an error if given 1, 10", function(){
+      expect(function(){
+        bowling.frameOneInput(1,10);
+      }).toThrowError("Incorrect scores entered")
+    })
+  })
 })
